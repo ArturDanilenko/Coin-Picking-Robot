@@ -1,0 +1,322 @@
+Archive member included to satisfy reference by file (symbol)
+
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+                              serial.o (__aeabi_idiv)
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_dvmd_tls.o)
+                              D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o) (__aeabi_idiv0)
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+                              main.o (__aeabi_fdiv)
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(fixsfsi.o)
+                              main.o (__aeabi_f2iz)
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+                              main.o (__aeabi_ddiv)
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(floatsidf.o)
+                              main.o (__aeabi_i2d)
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(truncdfsf2.o)
+                              main.o (__aeabi_d2f)
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+                              D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o) (__aeabi_uidiv)
+D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_clzsi2.o)
+                              D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o) (__clzsi2)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x00000000         0x00008000
+ram              0x10000000         0x00002000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD init.o
+LOAD main.o
+LOAD serial.o
+LOAD D:\CrossIDE\arm-none-eabi\lib\thumb\v6-m\libnosys.a
+LOAD D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a
+                0x00000400                stack_size = 0x400
+                0x00000400                heap_size = 0x400
+                [!provide]                PROVIDE (_stack_start, (ORIGIN (ram) + LENGTH (ram)))
+                [!provide]                PROVIDE (_stack_end, (_stack_start - stack_size))
+                [!provide]                PROVIDE (_heap_start, (_stack_end - heap_size))
+START GROUP
+LOAD D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a
+LOAD D:\CrossIDE\arm-none-eabi\lib\thumb\v6-m\libc_nano.a
+LOAD D:\CrossIDE\arm-none-eabi\lib\thumb\v6-m\libm.a
+END GROUP
+                0x00000000                . = ORIGIN (flash)
+
+.vectors        0x00000000       0xc0
+ *o(.vectors_)
+ .vectors       0x00000000       0xc0 init.o
+                0x00000000                Vectors
+
+.text           0x000000c0     0x15fc
+                0x000000c0                . = ALIGN (0x4)
+                0x000000c0                _start_text = .
+ *(.text)
+ .text          0x000000c0       0xd4 init.o
+                0x000000c0                clock_init
+                0x00000114                init
+                0x0000018c                Default_Handler
+ .text          0x00000194      0x23c main.o
+                0x00000194                wait_1ms
+                0x000001d4                waitms
+                0x000001f4                GetPeriod
+                0x000002ec                ConfigPins
+                0x00000308                main
+ .text          0x000003d0      0x384 serial.o
+                0x000003d0                initUART
+                0x000004ac                UART0_isr
+                0x000004e4                putBuf
+                0x0000052c                getBuf
+                0x0000057e                rx_count
+                0x00000590                eputc
+                0x000005d4                eputs
+                0x000005fe                egetc
+                0x00000618                egets
+                0x00000694                printString
+                0x000006b8                PrintNumber
+ .text          0x00000754      0x1d4 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+                0x00000754                __divsi3
+                0x00000754                __aeabi_idiv
+                0x00000920                __aeabi_idivmod
+ .text          0x00000928        0x4 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_dvmd_tls.o)
+                0x00000928                __aeabi_idiv0
+                0x00000928                __aeabi_ldiv0
+ .text          0x0000092c      0x290 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+                0x0000092c                __aeabi_fdiv
+ .text          0x00000bbc       0x40 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(fixsfsi.o)
+                0x00000bbc                __aeabi_f2iz
+ .text          0x00000bfc      0x668 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+                0x00000bfc                __aeabi_ddiv
+ .text          0x00001264       0x84 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(floatsidf.o)
+                0x00001264                __aeabi_i2d
+ .text          0x000012e8      0x114 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(truncdfsf2.o)
+                0x000012e8                __aeabi_d2f
+ .text          0x000013fc      0x114 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+                0x000013fc                __aeabi_uidiv
+                0x000013fc                __udivsi3
+                0x00001508                __aeabi_uidivmod
+ .text          0x00001510       0x3c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_clzsi2.o)
+                0x00001510                __clzsi2
+ *(.text*)
+ *(.rodata)
+ .rodata        0x0000154c       0x98 main.o
+ .rodata        0x000015e4       0x15 serial.o
+ *fill*         0x000015f9        0x3 
+ .rodata        0x000015fc       0x80 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+ .rodata        0x0000167c       0x40 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+ *(.rodata*)
+                0x000016bc                _end_text = .
+
+.glue_7         0x000016bc        0x0
+ .glue_7        0x000016bc        0x0 linker stubs
+
+.glue_7t        0x000016bc        0x0
+ .glue_7t       0x000016bc        0x0 linker stubs
+
+.vfp11_veneer   0x000016bc        0x0
+ .vfp11_veneer  0x000016bc        0x0 linker stubs
+
+.v4_bx          0x000016bc        0x0
+ .v4_bx         0x000016bc        0x0 linker stubs
+
+.iplt           0x000016bc        0x0
+ .iplt          0x000016bc        0x0 init.o
+
+.rel.dyn        0x000016bc        0x0
+ .rel.iplt      0x000016bc        0x0 init.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x000016bc                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000016bc                __exidx_end = .
+                0x10000000                . = ORIGIN (ram)
+                0x10000000                . = ALIGN (0x4)
+
+.data           0x10000000        0x0 load address 0x000016bc
+                0x000016bc                INIT_DATA_VALUES = LOADADDR (.data)
+                0x10000000                INIT_DATA_START = .
+ *(.data)
+ .data          0x10000000        0x0 init.o
+ .data          0x10000000        0x0 main.o
+ .data          0x10000000        0x0 serial.o
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_dvmd_tls.o)
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(fixsfsi.o)
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(floatsidf.o)
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(truncdfsf2.o)
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+ .data          0x10000000        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_clzsi2.o)
+ *(.data*)
+                0x10000000                INIT_DATA_END = .
+
+.igot.plt       0x10000000        0x0 load address 0x000016bc
+ .igot.plt      0x10000000        0x0 init.o
+                0x10000000                . = ALIGN (0x4)
+                0x10000000                BSS_START = .
+
+.bss            0x10000000       0x1c load address 0x000016bc
+                0x10000000                __bss_start__ = .
+ *(.bss)
+ .bss           0x10000000        0x0 init.o
+ .bss           0x10000000        0x0 main.o
+ .bss           0x10000000       0x1c serial.o
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(fixsfsi.o)
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(floatsidf.o)
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(truncdfsf2.o)
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+ .bss           0x1000001c        0x0 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_clzsi2.o)
+ *(.bss*)
+ *(COMMON)
+                0x1000001c                _ebss = .
+                0x1000001c                __bss_end__ = .
+                0x1000001c                BSS_END = .
+OUTPUT(main.elf elf32-littlearm)
+
+.debug_info     0x00000000      0x50b
+ .debug_info    0x00000000      0x102 init.o
+ .debug_info    0x00000102      0x121 main.o
+ .debug_info    0x00000223      0x2e8 serial.o
+
+.debug_abbrev   0x00000000      0x2fd
+ .debug_abbrev  0x00000000       0xc7 init.o
+ .debug_abbrev  0x000000c7       0xc8 main.o
+ .debug_abbrev  0x0000018f      0x16e serial.o
+
+.debug_aranges  0x00000000       0x60
+ .debug_aranges
+                0x00000000       0x20 init.o
+ .debug_aranges
+                0x00000020       0x20 main.o
+ .debug_aranges
+                0x00000040       0x20 serial.o
+
+.debug_line     0x00000000      0x1c0
+ .debug_line    0x00000000       0x54 init.o
+ .debug_line    0x00000054       0xae main.o
+ .debug_line    0x00000102       0xbe serial.o
+
+.debug_str      0x00000000      0x249
+ .debug_str     0x00000000      0x132 init.o
+                                0x137 (size before relaxing)
+ .debug_str     0x00000132       0x5a main.o
+                                0x127 (size before relaxing)
+ .debug_str     0x0000018c       0xbd serial.o
+                                0x191 (size before relaxing)
+
+.comment        0x00000000       0x7f
+ .comment       0x00000000       0x7f init.o
+                                 0x80 (size before relaxing)
+ .comment       0x0000007f       0x80 main.o
+ .comment       0x0000007f       0x80 serial.o
+
+.ARM.attributes
+                0x00000000       0x31
+ .ARM.attributes
+                0x00000000       0x31 init.o
+ .ARM.attributes
+                0x00000031       0x31 main.o
+ .ARM.attributes
+                0x00000062       0x31 serial.o
+ .ARM.attributes
+                0x00000093       0x1e D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x000000b1       0x1e D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x000000cf       0x2c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+ .ARM.attributes
+                0x000000fb       0x2c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(fixsfsi.o)
+ .ARM.attributes
+                0x00000127       0x2c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+ .ARM.attributes
+                0x00000153       0x2c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(floatsidf.o)
+ .ARM.attributes
+                0x0000017f       0x2c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(truncdfsf2.o)
+ .ARM.attributes
+                0x000001ab       0x1e D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000001c9       0x1e D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_clzsi2.o)
+
+.debug_frame    0x00000000      0x3ac
+ .debug_frame   0x00000000       0x68 init.o
+ .debug_frame   0x00000068       0xa8 main.o
+ .debug_frame   0x00000110      0x168 serial.o
+ .debug_frame   0x00000278       0x20 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+ .debug_frame   0x00000298       0x3c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+ .debug_frame   0x000002d4       0x20 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(fixsfsi.o)
+ .debug_frame   0x000002f4       0x3c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+ .debug_frame   0x00000330       0x2c D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(floatsidf.o)
+ .debug_frame   0x0000035c       0x30 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(truncdfsf2.o)
+ .debug_frame   0x0000038c       0x20 D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+
+Cross Reference Table
+
+Symbol                                            File
+BSS_END                                           init.o
+BSS_START                                         init.o
+ConfigPins                                        main.o
+Default_Handler                                   init.o
+GetPeriod                                         main.o
+INIT_DATA_END                                     init.o
+INIT_DATA_START                                   init.o
+INIT_DATA_VALUES                                  init.o
+PrintNumber                                       serial.o
+                                                  main.o
+UART0_isr                                         serial.o
+                                                  init.o
+Vectors                                           init.o
+__aeabi_d2f                                       D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(truncdfsf2.o)
+                                                  main.o
+__aeabi_ddiv                                      D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+                                                  main.o
+__aeabi_f2iz                                      D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(fixsfsi.o)
+                                                  main.o
+__aeabi_fdiv                                      D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+                                                  main.o
+__aeabi_i2d                                       D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(floatsidf.o)
+                                                  main.o
+__aeabi_idiv                                      D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+                                                  serial.o
+__aeabi_idiv0                                     D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_dvmd_tls.o)
+                                                  D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+                                                  D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+__aeabi_idivmod                                   D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+                                                  serial.o
+__aeabi_ldiv0                                     D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_dvmd_tls.o)
+__aeabi_uidiv                                     D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+                                                  D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+__aeabi_uidivmod                                  D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+                                                  D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+__clzsi2                                          D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_clzsi2.o)
+                                                  D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(floatsidf.o)
+                                                  D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divdf3.o)
+                                                  D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(divsf3.o)
+__divsi3                                          D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_divsi3.o)
+__udivsi3                                         D:\CrossIDE\lib\gcc\arm-none-eabi\6.3.1\thumb\v6-m\libgcc.a(_udivsi3.o)
+clock_init                                        init.o
+egetc                                             serial.o
+egets                                             serial.o
+eputc                                             serial.o
+eputs                                             serial.o
+                                                  main.o
+getBuf                                            serial.o
+init                                              init.o
+initUART                                          serial.o
+                                                  main.o
+main                                              main.o
+                                                  init.o
+printString                                       serial.o
+putBuf                                            serial.o
+rx_count                                          serial.o
+wait_1ms                                          main.o
+waitms                                            main.o
